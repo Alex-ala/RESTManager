@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>REST API Manager</title>
+</head>
+<body>
+{%  if request.method == 'GET' %}
+<form action="" method="post">
+    <div class="input text">
+        {{ form.name.label }}:{{ form.name(rows='1', cols='50') }}</br>
+        {{ form.auth_uri.label }}:{{ form.auth_uri(rows='1', cols='50') }}</br>
+        {{ form.token_uri.label }}:{{ form.token_uri(rows='1', cols='50') }}</br>
+        {{ form.client_id.label }}:{{ form.client_id(rows='1', cols='50') }}</br>
+        {{ form.client_secret.label }}:{{ form.client_secret(rows='1', cols='50') }}</br>
+        {{ form.redirect_uri.label }}:{{ form.redirect_uri(rows='1', cols='50') }}</br>
+        {{ form.scope.label }}:{{ form.scope(rows='1', cols='50') }}</br>
+    </div>
+
+    <div class="input submit">
+        <input type="submit" value="Submit" />
+    </div>
+    {% for api in apis %}
+    <a href="/refresh?api={{api}}">{{api}}</a></br>
+    {% endfor %}
+</form>
+
+{% endif %}
+</body>
+</html>
