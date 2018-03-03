@@ -26,7 +26,7 @@ def load_configs():
         with open(os.path.join(DATADIR, ".apis")) as apiConfig:
             APIS = json.load(apiConfig)
     except:
-        print "No config file yet"
+        print("No config file yet")
 
 
 def save_configs():
@@ -70,7 +70,7 @@ def main():
 def callback():
     os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
     global currentApi
-    print currentApi
+    print(currentApi)
     oauth = OAuth2Session(currentApi["client_id"], redirect_uri=currentApi["redirect_uri"], scope=currentApi["scope"])
     token = oauth.fetch_token(currentApi["token_uri"], client_secret=currentApi["client_secret"], authorization_response=request.url)
     currentApi["token"] = token
