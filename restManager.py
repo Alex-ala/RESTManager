@@ -69,6 +69,7 @@ def main():
 @app.route("/callback")
 def callback():
     os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+    os.environ['OAUTHLIB_RELAX_TOKEN_SCOPE'] = '1'
     global currentApi
     print(currentApi)
     oauth = OAuth2Session(currentApi["client_id"], redirect_uri=currentApi["redirect_uri"], scope=currentApi["scope"])
